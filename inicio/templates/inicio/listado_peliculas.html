@@ -1,0 +1,23 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Peliculas</title>{% endblock head %}
+
+{% block h1_header %}
+Peliculas
+{% endblock h1_header %}
+
+{% block main  %}
+
+<form action="">
+        {{ formulario }} 
+    <input type="submit" value="Buscar">
+</form>
+
+<ul>
+    {% for pelicula in peliculas_encontradas %}
+    <li>
+        {{pelicula}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock main  %}
