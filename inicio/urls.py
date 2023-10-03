@@ -4,7 +4,7 @@ from inicio.views import inicio, agregar_pelicula, listado_peliculas
 
 urlpatterns = [
     path("", inicio, name= "inicio"),
-    path("pelicula", listado_peliculas, name= "peliculas"),
+    path("pelicula/buscar", listado_peliculas, name= "listado_peliculas"),
     path("pelicula/agregar", agregar_pelicula, name= "agregar_pelicula")
 ]
 

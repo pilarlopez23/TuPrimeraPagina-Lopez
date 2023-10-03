@@ -22,9 +22,9 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="/">Homepage</a>
-                <a class="navbar-brand" href="pelicula/agregar">Agregar película</a>
-                <a class="navbar-brand" href="peliculas">Buscar películas</a>
+                <a class="navbar-brand" href="{% url "inicio" %}">Homepage</a>
+                <a class="navbar-brand" href="{% url "agregar_pelicula" %}">Agregar película</a>
+                <a class="navbar-brand" href="{% url "listado_peliculas" %}">Buscar películas</a>
                 {% comment "" %}<a class="btn btn-primary" href="#signup">Sign Up</a>{% endcomment %}
             </div>
         </nav>
