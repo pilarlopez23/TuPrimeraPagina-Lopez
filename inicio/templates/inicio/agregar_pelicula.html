@@ -1,0 +1,19 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Agregar película</title>{% endblock head %}
+
+{% block h1_header %}
+Agregar pelicula
+{% endblock h1_header %}
+
+{% block main  %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ formulario }}
+    </table>
+    
+    <input type="submit" value="Agregar">
+</form>
+{% endblock main  %}
