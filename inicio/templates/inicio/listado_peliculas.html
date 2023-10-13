@@ -13,6 +13,7 @@ Peliculas
     <input type="submit" value="Buscar">
 </form>
 
+{% if peliculas_encontradas  %}
 <ul>
     {% for pelicula in peliculas_encontradas %}
     <li>
@@ -20,4 +21,7 @@ Peliculas
     </li>
     {% endfor %}
 </ul>
+{% else %}
+<p>No se encontraron peliculas</p>
+{% endif %}
 {% endblock main  %}
