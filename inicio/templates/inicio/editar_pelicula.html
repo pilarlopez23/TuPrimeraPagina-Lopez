@@ -1,9 +1,9 @@
 {% extends "compartidos/base.html" %}
 
-{% block head %}<title>Editar serie</title>{% endblock head %}
+{% block head %}<title>Editar película</title>{% endblock head %}
 
 {% block h1_header %}
-Editar serie
+Editar pelicula
 {% endblock h1_header %}
 
 {% block main  %}
@@ -11,11 +11,12 @@ Editar serie
 <form action="" method="POST">
     {% csrf_token %}
     <table>
-        {{ form }}
+        {{ formulario }}
     </table>
     
     <input type="submit" value="Editar">
-    <a class="navbar-brand" href="{% url "listado_series" %}">Cancelar</a>
+    <a class="navbar-brand" href="{% url "listado_peliculas" %}">Cancelar</a>
 </form>
+
 
 {% endblock main  %}

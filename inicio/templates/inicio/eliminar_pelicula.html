@@ -1,0 +1,20 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Eliminar película</title>{% endblock head %}
+
+{% block h1_header %}
+Eliminar pelicula
+{% endblock h1_header %}
+
+{% block main  %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        Titulo: {{ pelicula.titulo }}
+    </table>
+    <p>¿Estás seguro que queres eliminar esta película?</p>
+    <input type="submit" value="Eliminar">
+    <a class="navbar-brand" href="{% url "listado_peliculas" %}">Cancelar</a>
+</form>
+{% endblock main  %}

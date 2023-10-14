@@ -1,0 +1,29 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Series</title>{% endblock head %}
+
+{% block h1_header %}
+Series
+{% endblock h1_header %}
+
+{% block main  %}
+
+<a class="navbar-brand" href="{% url "crear_serie" %}">Agregar serie</a>
+
+<form action="{% url "listado_series" %}">
+    Series: <input type="text" name="titulo" placeholder="Titulo de la serie">
+    <input type="submit" value="Buscar">
+</form>
+
+{% if listado_series  %}
+<ul>
+    {% for serie in listado_series %}
+    <li>
+        {{serie}} | <a href="{% url "detalle_serie" serie.id %}">+</a> | <a href="{% url "editar_serie" serie.id %}">Editar</a> | <a href="{% url "eliminar_serie" serie.id %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron series</p>
+{% endif %}
+{% endblock main  %}

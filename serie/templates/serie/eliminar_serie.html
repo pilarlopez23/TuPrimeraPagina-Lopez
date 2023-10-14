@@ -1,0 +1,20 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Eliminar serie</title>{% endblock head %}
+
+{% block h1_header %}
+Eliminar serie
+{% endblock h1_header %}
+
+{% block main  %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        Titulo: {{ serie.titulo }}
+    </table>
+    <p>¿Estás seguro que queres eliminar esta serie?</p>
+    <input type="submit" value="Eliminar">
+    <a class="navbar-brand" href="{% url "listado_series" %}">Cancelar</a>
+</form>
+{% endblock main  %}

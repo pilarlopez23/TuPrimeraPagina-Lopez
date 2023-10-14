@@ -7,9 +7,10 @@ Peliculas
 {% endblock h1_header %}
 
 {% block main  %}
+<a class="navbar-brand" href="{% url "agregar_pelicula" %}">Agregar película</a>
 
 <form action="">
-        {{ formulario }} 
+        {{ formulario }}
     <input type="submit" value="Buscar">
 </form>
 
@@ -17,7 +18,7 @@ Peliculas
 <ul>
     {% for pelicula in peliculas_encontradas %}
     <li>
-        {{pelicula}}
+        {{pelicula}} | <a href="{% url "detalle_pelicula" pelicula.id %}">+</a> | <a href="{% url "editar_pelicula" pelicula.id %}">Editar</a> | <a href="{% url "eliminar_pelicula" pelicula.id %}">Eliminar</a> 
     </li>
     {% endfor %}
 </ul>

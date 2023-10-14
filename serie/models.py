@@ -8,4 +8,4 @@ class Serie(models.Model):
     fecha_estreno = models.DateField()
     
     def __str__(self):
-        return f"{self.titulo} {self.creador}"
+        return f"{self.titulo} {self.creador} {self.sinopsis} {self.temporadas} {self.fecha_estreno}"

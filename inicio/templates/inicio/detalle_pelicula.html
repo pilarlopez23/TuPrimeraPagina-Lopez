@@ -1,0 +1,20 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Detalle</title>{% endblock head %}
+
+{% block h1_header %}
+Detalle de la película
+<p>ID: {{pelicula.id}}</p> 
+
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>Titulo: {{pelicula.titulo}}</li>
+    <li>Director: {{pelicula.director}}</li>
+    <li>Sinposis: {{pelicula.sinopsis}}</li>
+</ul>
+<a class="navbar-brand" href="{% url "listado_peliculas" %}">Volver al listado</a>
+
+{% endblock main %}

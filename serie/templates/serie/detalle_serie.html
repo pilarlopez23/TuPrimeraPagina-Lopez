@@ -1,0 +1,24 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Detalle</title>{% endblock head %}
+
+{% block h1_header %}
+Detalle de la serie
+<p>ID: {{serie.id}}</p> 
+
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>Titulo: {{serie.titulo}}</li>
+    <li>Creador: {{serie.creador}}</li>
+    <li>Sinposis: {{serie.sinopsis}}</li>
+    <li>Temporadas: {{serie.temporadas}}</li>
+    <li>Fecha de estreno: {{serie.fecha_estreno}}</li>
+
+</ul>
+
+<a class="navbar-brand" href="{% url "listado_series" %}">Volver al listado</a>
+
+{% endblock main %}
