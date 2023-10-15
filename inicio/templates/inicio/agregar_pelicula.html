@@ -12,8 +12,10 @@ Agregar pelicula
     {% csrf_token %}
     <table>
         {{ formulario }}
+        {{ formulario.media }}
     </table>
     
     <input type="submit" value="Agregar">
+    <a class="navbar-brand" href="{% url "listado_peliculas" %}">Cancelar</a>
 </form>
 {% endblock main  %}

@@ -12,6 +12,7 @@ Editar pelicula
     {% csrf_token %}
     <table>
         {{ formulario }}
+        {{ formulario.media }}
     </table>
     
     <input type="submit" value="Editar">

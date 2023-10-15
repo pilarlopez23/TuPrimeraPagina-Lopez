@@ -19,7 +19,7 @@ Series
 <ul>
     {% for serie in listado_series %}
     <li>
-        {{serie}} | <a href="{% url "detalle_serie" serie.id %}">+</a> | <a href="{% url "editar_serie" serie.id %}">Editar</a> | <a href="{% url "eliminar_serie" serie.id %}">Eliminar</a>
+        {{serie.titulo}} | <a href="{% url "detalle_serie" serie.id %}">+</a> | <a href="{% url "editar_serie" serie.id %}">Editar</a> | <a href="{% url "eliminar_serie" serie.id %}">Eliminar</a>
     </li>
     {% endfor %}
 </ul>

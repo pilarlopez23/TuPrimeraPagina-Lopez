@@ -11,6 +11,7 @@ Peliculas
 
 <form action="">
         {{ formulario }}
+        {{ formulario.media }}
     <input type="submit" value="Buscar">
 </form>
 
@@ -18,7 +19,7 @@ Peliculas
 <ul>
     {% for pelicula in peliculas_encontradas %}
     <li>
-        {{pelicula}} | <a href="{% url "detalle_pelicula" pelicula.id %}">+</a> | <a href="{% url "editar_pelicula" pelicula.id %}">Editar</a> | <a href="{% url "eliminar_pelicula" pelicula.id %}">Eliminar</a> 
+        {{pelicula.titulo}} | <a href="{% url "detalle_pelicula" pelicula.id %}">+</a> | <a href="{% url "editar_pelicula" pelicula.id %}">Editar</a> | <a href="{% url "eliminar_pelicula" pelicula.id %}">Eliminar</a> 
     </li>
     {% endfor %}
 </ul>

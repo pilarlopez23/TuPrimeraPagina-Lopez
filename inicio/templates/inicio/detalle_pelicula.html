@@ -13,7 +13,7 @@ Detalle de la película
 <ul>
     <li>Titulo: {{pelicula.titulo}}</li>
     <li>Director: {{pelicula.director}}</li>
-    <li>Sinposis: {{pelicula.sinopsis}}</li>
+    <li>Sinopsis: {{pelicula.sinopsis|safe}} </li>
 </ul>
 <a class="navbar-brand" href="{% url "listado_peliculas" %}">Volver al listado</a>
 

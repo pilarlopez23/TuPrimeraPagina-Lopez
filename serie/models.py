@@ -1,9 +1,10 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Serie(models.Model):
     titulo = models.CharField(max_length= 100)
     creador = models.CharField(max_length=50)
-    sinopsis = models.TextField()
+    sinopsis = RichTextField(default=" ")
     temporadas = models.IntegerField()
     fecha_estreno = models.DateField()
     
