@@ -22,9 +22,20 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="{% url "inicio" %}">Inicio</a>
-                <a class="navbar-brand" href="{% url "listado_peliculas" %}">Películas</a>
+                <a class="btn btn-success" href="{% url "inicio" %}">Inicio</a>
+                <a class="navbar-brand" href={% url "listado_peliculas" %}>Peliculas</a>
                 <a class="navbar-brand" href="{% url "listado_series" %}">Series</a>
+                {% if request.user.is_authenticated %}
+                {% if request.user.infoadicional.avatar %}
+                    <img src="{{request.user.infoadicional.avatar.url}}" alt="" height ="40px">
+                {% endif %}
+                <a class="btn btn-light" href={% url "editar_perfil" %}>{{request.user.username}}</a>
+                <a class="btn btn-secondary" href={% url "logout" %}>Cerrar Sesión</a>
+                {% else %}
+                <a class="btn btn-success" href={% url "login" %}>Iniciar Sesión</a>
+                <a class="btn btn-secondary" href={% url "registro" %}>Crear cuenta</a>
+                {% endif %}
+                
                 {% comment "" %}<a class="btn btn-primary" href="#signup">Sign Up</a>{% endcomment %}
             </div>
         </nav>

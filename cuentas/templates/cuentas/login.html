@@ -1,0 +1,19 @@
+{% extends "compartidos/base.html" %}
+
+{% block head %}<title>Iniciar Sesión</title>{% endblock head %}
+
+{% block h1_header %}
+Iniciar Sesión
+{% endblock h1_header %}
+
+{% block main  %}
+
+<form action="{% url "login" %}" method="POST" enctype= "multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{formulario}}
+        
+    </table>   
+    <input type="submit" value="Iniciar Sesión">
+</form>
+{% endblock main  %}

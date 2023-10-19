@@ -6,20 +6,21 @@ from serie.models import Serie
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class SerieCreateView(CreateView):
+class SerieCreateView(LoginRequiredMixin, CreateView):
     model = Serie
     fields = ["titulo", "creador", "sinopsis", "temporadas", "fecha_estreno"]  
     template_name= "serie/crear_serie.html"
     success_url = reverse_lazy("listado_series")
 
-class SerieDeleteView(DeleteView):
+class SerieDeleteView(LoginRequiredMixin, DeleteView):
     model = Serie
     template_name = "serie/eliminar_serie.html"
     success_url = reverse_lazy("listado_series")
 
-class SerieUpdateView(UpdateView):
+class SerieUpdateView(LoginRequiredMixin, UpdateView):
     model = Serie
     fields = ["titulo", "creador", "sinopsis", "temporadas", "fecha_estreno"]  
     template_name = "serie/editar_serie.html"

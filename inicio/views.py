@@ -6,12 +6,15 @@ from inicio.forms import PeliculaFormularioCrear, EditarPeliculaFormulario, Peli
 from django.views.generic.edit import DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 
 def inicio(request):
     return render(request, r"inicio/inicio.html")
 
+@login_required
 def agregar_pelicula(request):
     if request.method == "POST":
         formulario = PeliculaFormularioCrear(request.POST)
@@ -37,7 +40,7 @@ def listado_peliculas(request):
     formulario = PeliculaBusquedaFormulario()
     return render(request, r"inicio/listado_peliculas.html", {"formulario": formulario, "peliculas_encontradas": peliculas_encontradas})
 
-
+@login_required
 def editar_pelicula(request, pelicula_id): 
     pelicula_a_editar = Pelicula.objects.get(id= pelicula_id)
     if request.method == "POST":
@@ -53,7 +56,7 @@ def editar_pelicula(request, pelicula_id):
     return render(request, r"inicio/editar_pelicula.html", {"formulario": formulario})
 
 
-class PeliculaDeleteView(DeleteView):
+class PeliculaDeleteView(LoginRequiredMixin, DeleteView):
     model = Pelicula
     template_name = "inicio/eliminar_pelicula.html"
     success_url = reverse_lazy("listado_peliculas")
