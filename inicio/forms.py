@@ -5,6 +5,7 @@ class PeliculaFormularioBase(forms.Form):
     titulo = forms.CharField( max_length= 100)
     director = forms.CharField( max_length= 50)
     sinopsis = RichTextFormField()
+    portada = forms.ImageField(required=False)
     
 class PeliculaFormularioCrear(PeliculaFormularioBase):
     pass

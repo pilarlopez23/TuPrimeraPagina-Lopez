@@ -8,13 +8,14 @@ Cambiar contraseña
 
 {% block main  %}
 
-<form action="editar_pass" method="POST">
+<form action="editar_pass" method="POST" >
     {% csrf_token %}
     <table>
         {{ form }}
     </table>
     
     <input type="submit" value="Cambiar">
+    <a class="navbar-brand" href="{% url "inicio"%}">Volver</a>
     
 </form>
 

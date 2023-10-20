@@ -7,6 +7,7 @@ class Serie(models.Model):
     sinopsis = RichTextField(default=" ")
     temporadas = models.IntegerField()
     fecha_estreno = models.DateField()
+    portada = models.ImageField(null=True)
     
     def __str__(self):
-        return f"{self.titulo} {self.creador} {self.sinopsis} {self.temporadas} {self.fecha_estreno}"
+        return f"{self.titulo} {self.creador} {self.sinopsis} {self.temporadas} {self.fecha_estreno} {self.portada}"

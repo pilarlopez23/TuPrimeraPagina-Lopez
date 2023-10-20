@@ -8,7 +8,7 @@ Series
 
 {% block main  %}
 
-<a class="navbar-brand" href="{% url "crear_serie" %}">Agregar serie</a>
+<a class="btn btn-light" href="{% url "crear_serie" %}" style="display:flex; justify-content: center; align-items: center; text-align:center;">Agregar serie</a>
 
 <form action="{% url "listado_series" %}">
     Series: <input type="text" name="titulo" placeholder="Titulo de la serie">

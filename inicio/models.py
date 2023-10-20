@@ -5,6 +5,7 @@ class Pelicula(models.Model):
     titulo = models.CharField(max_length= 100)
     director = models.CharField(max_length=50)
     sinopsis = RichTextField()
+    portada = models.ImageField(null=True)
     
     def __str__(self):
-        return f"{self.titulo} {self.director} {self.sinopsis}"
+        return f"{self.titulo} {self.director} {self.sinopsis} {self.portada}"

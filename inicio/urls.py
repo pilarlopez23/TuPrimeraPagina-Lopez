@@ -1,11 +1,12 @@
 from django.urls import path
-from inicio.views import inicio, agregar_pelicula, listado_peliculas, editar_pelicula
+from inicio.views import acerca_de_mi, inicio, agregar_pelicula, listado_peliculas, editar_pelicula
 from inicio import views
 
 
 
 urlpatterns = [
     path("", inicio, name= "inicio"),
+    path("acerca-de-mi/", acerca_de_mi, name= "acerca_de_mi"),
     path("peliculas/", listado_peliculas, name= "listado_peliculas"),
     path("pelicula/agregar/", agregar_pelicula, name= "agregar_pelicula"),
     path("pelicula/<int:pelicula_id>/editar/", editar_pelicula, name= "editar_pelicula"),

@@ -4,7 +4,8 @@
 
 {% block h1_header %}
 Detalle de la película
-<p>ID: {{pelicula.id}}</p> 
+<p>{{pelicula.titulo}}</p> 
+<img src="{{pelicula.portada.url}}" alt="" srcset="" height="100px">
 
 {% endblock h1_header %}
 
@@ -15,6 +16,7 @@ Detalle de la película
     <li>Director: {{pelicula.director}}</li>
     <li>Sinopsis: {{pelicula.sinopsis|safe}} </li>
 </ul>
-<a class="navbar-brand" href="{% url "listado_peliculas" %}">Volver al listado</a>
+<a href="{% url "listado_peliculas" %}">Volver al listado</a>
+
 
 {% endblock main %}

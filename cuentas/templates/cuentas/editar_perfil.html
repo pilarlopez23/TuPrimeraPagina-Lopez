@@ -8,14 +8,13 @@ Editar perfil
 
 {% block main  %}
 
-<form action="{% url "editar_perfil" %}" method="POST">
+<form action="{% url "editar_perfil" %}" method="POST" enctype= "multipart/form-data">
     {% csrf_token %}
     <table>
         {{formulario}}        
     </table>   
     <input type="submit" value="Guardar cambios">
-    <br>
-    <button type= "submit" class="btn btn-warning" href={% url "editar_pass" %}> Cambiar contraseña </button>
+    <a class="navbar-brand" href="{% url "detalle_perfil" pk=request.user.id %} ">Volver</a>
 
 </form>
 {% endblock main  %}

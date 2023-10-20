@@ -7,9 +7,10 @@ Peliculas
 {% endblock h1_header %}
 
 {% block main  %}
-<a class="navbar-brand" href="{% url "agregar_pelicula" %}">Agregar película</a>
 
-<form action="">
+<a class="btn btn-light" href="{% url "agregar_pelicula" %}" style="display:flex; justify-content: center; align-items: center; text-align:center;">Agregar película</a>
+
+<form action="" enctype= "multipart/form-data">
         {{ formulario }}
         {{ formulario.media }}
     <input type="submit" value="Buscar">

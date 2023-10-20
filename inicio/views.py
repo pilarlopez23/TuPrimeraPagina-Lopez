@@ -10,6 +10,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 
+def acerca_de_mi(request):
+    return render(request, r"inicio/acerca_de_mi.html")
 
 def inicio(request):
     return render(request, r"inicio/inicio.html")
@@ -17,10 +19,10 @@ def inicio(request):
 @login_required
 def agregar_pelicula(request):
     if request.method == "POST":
-        formulario = PeliculaFormularioCrear(request.POST)
+        formulario = PeliculaFormularioCrear(request.POST, request.FILES)
         if formulario.is_valid():
             data = formulario.cleaned_data
-            pelicula = Pelicula(titulo=data.get("titulo"), director =data["director"], sinopsis = data["sinopsis"])
+            pelicula = Pelicula(titulo=data.get("titulo"), director =data["director"], sinopsis = data["sinopsis"], portada = data["portada"])
             pelicula.save()
             return redirect("listado_peliculas")
         else:
@@ -30,7 +32,7 @@ def agregar_pelicula(request):
     return render(request, r"inicio/agregar_pelicula.html", {"formulario": formulario})
 
 def listado_peliculas(request):
-    formulario = PeliculaBusquedaFormulario(request.GET)
+    formulario = PeliculaBusquedaFormulario(request.GET, request.FILES)
     if formulario.is_valid():
         titulo_a_buscar = formulario.cleaned_data.get("titulo")
         peliculas_encontradas = Pelicula.objects.filter(titulo__icontains= titulo_a_buscar)
@@ -44,15 +46,16 @@ def listado_peliculas(request):
 def editar_pelicula(request, pelicula_id): 
     pelicula_a_editar = Pelicula.objects.get(id= pelicula_id)
     if request.method == "POST":
-        formulario = EditarPeliculaFormulario(request.POST)
+        formulario = EditarPeliculaFormulario(request.POST, request.FILES)
         if formulario.is_valid():
             data = formulario.cleaned_data
             pelicula_a_editar.titulo = data["titulo"]
             pelicula_a_editar.director = data["director"]
             pelicula_a_editar.sinopsis = data["sinopsis"]
+            pelicula_a_editar.portada = data["portada"]
             pelicula_a_editar.save()
             return redirect("listado_peliculas")
-    formulario = EditarPeliculaFormulario(initial={"titulo": pelicula_a_editar.titulo, "director": pelicula_a_editar.director, "sinopsis": pelicula_a_editar.sinopsis})
+    formulario = EditarPeliculaFormulario(initial={"titulo": pelicula_a_editar.titulo, "director": pelicula_a_editar.director, "sinopsis": pelicula_a_editar.sinopsis, "portada":pelicula_a_editar.portada})
     return render(request, r"inicio/editar_pelicula.html", {"formulario": formulario})
 
 

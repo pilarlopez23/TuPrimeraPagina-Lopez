@@ -22,15 +22,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="btn btn-success" href="{% url "inicio" %}">Inicio</a>
+                <a class="navbar-brand" href="{% url "inicio" %}">Inicio</a>
                 <a class="navbar-brand" href={% url "listado_peliculas" %}>Peliculas</a>
                 <a class="navbar-brand" href="{% url "listado_series" %}">Series</a>
                 {% if request.user.is_authenticated %}
-                {% if request.user.infoadicional.avatar %}
-                    <img src="{{request.user.infoadicional.avatar.url}}" alt="" height ="40px">
+                {% if request.user.infoextra.avatar %}
+                    <img src="{{request.user.infoextra.avatar.url}}" alt="" height ="50px">
                 {% endif %}
-                <a class="btn btn-light" href={% url "editar_perfil" %}>{{request.user.username}}</a>
-                <a class="btn btn-secondary" href={% url "logout" %}>Cerrar Sesión</a>
+                <a class="btn btn-info" href={% url "detalle_perfil" pk=request.user.id%}>{{request.user.username}}</a>
+                <a class="btn btn-warning" href={% url "logout" %}>Cerrar Sesión</a>
                 {% else %}
                 <a class="btn btn-success" href={% url "login" %}>Iniciar Sesión</a>
                 <a class="btn btn-secondary" href={% url "registro" %}>Crear cuenta</a>
@@ -79,9 +79,7 @@
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item text-center"><a href="#!">About</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item text-center"><a href="#!">Contact</a></li>
+                            <a class="btn btn-link" href={% url "acerca_de_mi" %}>Acerca de mí</a></li>
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
                     </div>
