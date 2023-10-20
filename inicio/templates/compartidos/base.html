@@ -29,7 +29,7 @@
                 {% if request.user.infoextra.avatar %}
                     <img src="{{request.user.infoextra.avatar.url}}" alt="" height ="50px">
                 {% endif %}
-                <a class="btn btn-info" href={% url "detalle_perfil" pk=request.user.id%}>{{request.user.username}}</a>
+                <a class="btn btn-light" href={% url "detalle_perfil" pk=request.user.id%}>{{request.user.username}}</a>
                 <a class="btn btn-warning" href={% url "logout" %}>Cerrar Sesión</a>
                 {% else %}
                 <a class="btn btn-success" href={% url "login" %}>Iniciar Sesión</a>

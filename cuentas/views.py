@@ -12,11 +12,11 @@ from cuentas.models import InfoExtra, User
 
 def registro(request):
     if request.method == "POST":
-        formulario = RegistroNuevoUsuario(request.POST)
+        formulario = RegistroNuevoUsuario(request.POST, request.FILES)
         if formulario.is_valid():
             formulario.save()
             
-            return redirect("detalle_perfil")
+            return redirect("inicio")
     else:
         formulario = RegistroNuevoUsuario()  
     
@@ -65,10 +65,15 @@ class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView):
 class PerfilDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = "cuentas/detalle_perfil.html"
+    context_object_name ="usuario"
 
     def get_context_data(self, **kwargs):
        context = super().get_context_data(**kwargs)
-       info_extra= InfoExtra.objects.get(user=self.object)
-       context["info_extra"] = info_extra.avatar
+       usuario = self.object 
+       try:
+        info_extra= InfoExtra.objects.get(user=usuario)
+       except:
+        info_extra = None 
+       context["info_extra"] = info_extra
        return context
    
