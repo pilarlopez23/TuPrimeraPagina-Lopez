@@ -17,6 +17,7 @@ Usuario:
     <li>Nombre: {{usuario.first_name}}</li>
     <li>Apellido: {{usuario.last_name}}</li>
     <li>Email: {{usuario.email}}</li>   
+    <li>País: {{usuario.infoextra.pais}}</li> 
 
 </ul>
 <a href="{% url "editar_perfil"%}"> Editar</a> | <a href="{% url "editar_pass"%}">Cambiar contraseña</a> | <a href="{% url "inicio"%}">Volver</a>

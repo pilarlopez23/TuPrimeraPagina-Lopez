@@ -9,11 +9,12 @@ class RegistroNuevoUsuario(UserCreationForm):
     password1 = forms.CharField(label="Contraseña", widget= forms.PasswordInput)
     password2 = forms.CharField(label="Repetir Contraseña", widget=forms.PasswordInput)
     avatar = forms.ImageField(label="Foto de perfil", required=False)
-  
+    pais = forms.CharField(label="País") 
+    
     
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2", "avatar"]
+        fields = ["username", "email", "password1", "password2", "avatar","pais"]
         help_texts = {campo: " " for campo in fields}
         
 
@@ -23,11 +24,12 @@ class EditarPerfil(UserChangeForm):
     first_name = forms.CharField(label = "Cambiar nombre", max_length= 25)
     last_name = forms.CharField(label="Cambiar Apellido", max_length=25)
     avatar = forms.ImageField(label="Foto de perfil", required=False)
+    pais = forms.CharField(label="País") 
     
     
     class Meta:
         model = User
-        fields = ["email", "first_name", "last_name", "avatar"]
+        fields = ["email", "first_name", "last_name", "avatar", "pais"]
         
 
 class CambiarContrasenia(PasswordChangeForm):

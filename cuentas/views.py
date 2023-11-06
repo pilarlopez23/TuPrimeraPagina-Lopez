@@ -10,17 +10,26 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from cuentas.models import InfoExtra, User
 
+
 def registro(request):
     if request.method == "POST":
         formulario = RegistroNuevoUsuario(request.POST, request.FILES)
         if formulario.is_valid():
-            formulario.save()
-            
+            user = formulario.save()
+           
+            info_extra, created = InfoExtra.objects.get_or_create(user=user)
+            if "avatar" in request.FILES:
+                info_extra.avatar = request.FILES["avatar"] 
+            if "pais" in request.POST:
+                info_extra.pais = request.POST["pais"] 
+            info_extra.save()
+            user.save()
             return redirect("inicio")
     else:
         formulario = RegistroNuevoUsuario()  
     
     return render(request, "cuentas/registro.html", {"formulario": formulario})
+
 
 
 def login(request):
@@ -48,15 +57,16 @@ def editar_perfil(request):
         if formulario.is_valid():
             if formulario.cleaned_data.get("avatar"):
                 info_adicional.avatar = formulario.cleaned_data.get("avatar")
+            if formulario.cleaned_data.get("pais"):
+                info_adicional.pais = formulario.cleaned_data.get("pais")
             info_adicional.save()
             formulario.save()
             return redirect("detalle_perfil", pk=request.user.id) 
     else:
-        formulario = EditarPerfil(initial={"avatar": info_adicional.avatar}, instance= request.user)
+        formulario = EditarPerfil(initial={"avatar": info_adicional.avatar, "pais": info_adicional.pais}, instance= request.user)
     
     return render(request, "cuentas/editar_perfil.html", {"formulario": formulario})
-  
- 
+
 class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView):
     template_name = "cuentas/editar_pass.html"
     success_url = reverse_lazy("inicio")
